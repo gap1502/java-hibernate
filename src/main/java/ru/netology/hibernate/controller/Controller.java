@@ -8,6 +8,7 @@ import ru.netology.hibernate.service.Service;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class Controller {
@@ -20,5 +21,15 @@ public class Controller {
     @GetMapping("/persons/by-city")
     public List<Person> getProduct(@RequestParam("city") String city) {
         return service.getPersonsByCity(city);
+    }
+
+    @GetMapping("/persons/by-age")
+    public List<Person> getByAge(@RequestParam("age") int age) {
+        return service.getPersonsByAge(age);
+    }
+
+    @GetMapping("/persons/by-name-surname")
+    public Optional<Person> getNameAndSurname(@RequestParam("name") String name, @RequestParam("surname") String surname) {
+        return service.getPersonsByNameAndSurname(name, surname);
     }
 }
